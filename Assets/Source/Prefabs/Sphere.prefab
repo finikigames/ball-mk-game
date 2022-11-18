@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 500
-  JumpPower: 2
+  JumpPower: 10
   GroundRayLength: 10
   InputThrottleValue: 0.1
   OnGround: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 635137499464654485}
   - component: {fileID: 635137499464654484}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,6 +6,7 @@ namespace Services {
     public class InputService : BaseSingleton<InputService> {
         public Observable<Vector2> Input;
         public Observable<bool> Jump;
+        public bool JumpValue;
         public Vector2 InputVector;
         public Vector2 InputVectorClamped;
 
@@ -33,7 +34,9 @@ namespace Services {
                 InputVectorClamped = new Vector2(InputVectorClamped.x, inputVertical);
             }
 
-            Jump.Value = UnityEngine.Input.GetKeyDown(KeyCode.Space);
+            var jump = UnityEngine.Input.GetKey(KeyCode.Space);
+            Jump.Value = jump;
+            JumpValue = jump;
         }
     }
 }

@@ -353,6 +353,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5121954613471964052}
     m_Modifications:
+    - target: {fileID: 635137498890031567, guid: f2f3ccf6845f281439085dfcf8175312,
+        type: 3}
+      propertyPath: GroundRayLength
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 635137499030064689, guid: f2f3ccf6845f281439085dfcf8175312,
         type: 3}
       propertyPath: m_RootOrder
