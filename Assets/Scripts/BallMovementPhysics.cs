@@ -2,9 +2,7 @@
 using Services;
 using UnityEngine;
 
-public class BallMovement : MonoBehaviour
-{
-    [SerializeField] private float m_MovePower = 5;
+public class BallMovementPhysics : MonoBehaviour {
     [SerializeField] private bool m_UseTorque = true;
     [SerializeField] private float m_MaxAngularVelocity = 25;
     
@@ -28,14 +26,17 @@ public class BallMovement : MonoBehaviour
     }
 
     public void Move(Vector3 moveDirection) {
+        if (!BallStateService.Instance.OnGround) return;
+        
+        var mMovePower = BallStateService.Instance.Speed;
         // If using torque to rotate the ball...
         if (m_UseTorque) {
             // ... add torque around the axis defined by the move direction.
-            m_Rigidbody.AddTorque(new Vector3(moveDirection.z, 0, -moveDirection.x)*m_MovePower);
+            m_Rigidbody.AddTorque(new Vector3(moveDirection.z, 0, -moveDirection.x)*mMovePower);
         }
         else {
             // Otherwise add force in the move direction.
-            m_Rigidbody.AddForce(moveDirection*m_MovePower);
+            m_Rigidbody.AddForce(moveDirection*mMovePower);
         }
     }
 }
