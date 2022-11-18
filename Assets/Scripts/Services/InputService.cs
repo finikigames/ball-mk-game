@@ -1,29 +1,15 @@
-﻿using System;
-using Extensions;
+﻿using Extensions;
+using Services.Base;
 using UnityEngine;
 
 namespace Services {
-    public class InputService : MonoBehaviour {
+    public class InputService : BaseSingleton<InputService> {
         public Observable<Vector2> Input;
         public Observable<bool> Jump;
         public Vector2 InputVector;
+        public Vector2 InputVectorClamped;
 
-        private static InputService _instance;
-
-        public static InputService Instance {
-            get {
-                if (_instance == null) {
-                    var gameObject = new GameObject("Input Service");
-                    var inputService = gameObject.AddComponent<InputService>();
-                    inputService.Initialize();
-                    _instance = inputService;
-                }
-
-                return _instance;
-            }
-        }
-
-        public void Initialize() {
+        protected override void Initialize() {
             Input = new Observable<Vector2>();
             Jump = new Observable<bool>();
         }
@@ -31,11 +17,20 @@ namespace Services {
         private void Update() {
             var inputVertical = UnityEngine.Input.GetAxis("Vertical");
             var inputHorizontal = UnityEngine.Input.GetAxis("Horizontal");
+            
+            var vector = new Vector2(inputHorizontal, inputVertical);
+            InputVector = vector;
+            Input.Value = vector;
 
-            if (Mathf.Abs(inputHorizontal) > 0.01f || Mathf.Abs(inputVertical) > 0.01f) {
-                var vector = new Vector2(inputHorizontal, inputVertical);
-                InputVector = vector;
-                Input.Value = vector;
+            var throttleValue = BallStateService.Instance.InputThrottleValue;
+            
+            InputVectorClamped = Vector2.zero;
+            
+            if (Mathf.Abs(inputHorizontal) > throttleValue) {
+                InputVectorClamped = new Vector2(inputHorizontal, InputVectorClamped.y);
+            }
+            if (Mathf.Abs(inputVertical) > throttleValue) {
+                InputVectorClamped = new Vector2(InputVectorClamped.x, inputVertical);
             }
 
             Jump.Value = UnityEngine.Input.GetKeyDown(KeyCode.Space);
