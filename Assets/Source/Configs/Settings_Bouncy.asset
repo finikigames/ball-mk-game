@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd46add586484d57957c94bad651fcdc, type: 3}
+  m_Name: Settings_Bouncy
+  m_EditorClassIdentifier: 
+  BouncyMaterial: {fileID: 13400000, guid: b46642bd678401c418be677f6daa84b9, type: 2}

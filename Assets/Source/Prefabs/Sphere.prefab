@@ -49,6 +49,7 @@ MonoBehaviour:
   GroundRayLength: 10
   InputThrottleValue: 0.1
   OnGround: 0
+  BouncySettings: {fileID: 11400000, guid: aeb2a2495e7e27d47a7050f0cb0e3d5d, type: 2}
 --- !u!1 &635137499030064701
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
-﻿using Services.Base;
+﻿using System;
+using Services.Base;
+using TypeReferences;
 using Unity.Collections;
 using UnityEngine;
 
@@ -13,6 +15,8 @@ namespace Services {
         public bool OnGround;
 
         private GameObject _ball;
+
+        public BouncySettings BouncySettings;
         
         public void InitializeBall(GameObject ball) {
             _ball = ball;
