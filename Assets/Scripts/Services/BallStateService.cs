@@ -1,6 +1,5 @@
 ﻿using Scriptable;
 using Services.Base;
-﻿using DefaultNamespace;
 using Unity.Collections;
 using UnityEngine;
 
@@ -21,6 +20,7 @@ namespace Services {
         public TetraSettings TetraSettings;
         public ScaleSettings ScaleSettings;
         public WaterSettings WaterSettings;
+        public JumpSettings JumpSettings;
 
         private float _currentRayLength;
         
