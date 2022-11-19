@@ -25,7 +25,8 @@ namespace Services {
         public SphereSettings SphereSettings;
 
         private float _currentRayLength;
-        
+        private const string _waterLayerName = "Water";
+
         public void InitializeBall(GameObject ball) {
             Ball = ball;
         }
@@ -40,7 +41,7 @@ namespace Services {
         }
 
         private void CheckOnGround() {
-            OnGround = Physics.Raycast(Ball.transform.position, -Vector3.up, _currentRayLength);
+            OnGround = Physics.Raycast(Ball.transform.position, -Vector3.up, _currentRayLength, ~LayerMask.NameToLayer(_waterLayerName));
         }
     }
 }
