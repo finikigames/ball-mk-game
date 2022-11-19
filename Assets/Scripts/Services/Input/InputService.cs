@@ -1,5 +1,7 @@
 ﻿using Extensions;
 using Services.Base;
+using Services.Platform;
+using Services.Platform.Base;
 using UnityEngine;
 
 namespace Services {
@@ -10,16 +12,25 @@ namespace Services {
         public Vector2 InputVector;
         public Vector2 InputVectorClamped;
 
+        private BaseInput _input;
+        
         protected override void Initialize() {
             Input = new Observable<Vector2>();
             Jump = new Observable<bool>();
+
+            if (CheckMobileService.Instance.CheckIfMobile()) {
+                _input = new MobileInput();
+            }
+            else {
+                _input = new DesktopInput();
+            }
+            _input.Initialize();
+         
         }
 
         private void Update() {
-            var inputVertical = UnityEngine.Input.GetAxis("Vertical");
-            var inputHorizontal = UnityEngine.Input.GetAxis("Horizontal");
+            var vector = _input.GetInputState();
             
-            var vector = new Vector2(inputHorizontal, inputVertical);
             InputVector = vector;
             Input.Value = vector;
 
@@ -27,14 +38,14 @@ namespace Services {
             
             InputVectorClamped = Vector2.zero;
             
-            if (Mathf.Abs(inputHorizontal) > throttleValue) {
-                InputVectorClamped = new Vector2(inputHorizontal, InputVectorClamped.y);
+            if (Mathf.Abs(vector.x) > throttleValue) {
+                InputVectorClamped = new Vector2(vector.x, InputVectorClamped.y);
             }
-            if (Mathf.Abs(inputVertical) > throttleValue) {
-                InputVectorClamped = new Vector2(InputVectorClamped.x, inputVertical);
+            if (Mathf.Abs(vector.y) > throttleValue) {
+                InputVectorClamped = new Vector2(InputVectorClamped.x, vector.y);
             }
 
-            var jump = UnityEngine.Input.GetKey(KeyCode.Space);
+            var jump = _input.GetJumpState();
             Jump.Value = jump;
             JumpValue = jump;
         }
