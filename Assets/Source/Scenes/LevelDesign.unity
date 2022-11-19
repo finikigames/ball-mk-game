@@ -1361,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4604077172822636, guid: e865a10713e46984aba70d89a679e42f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8286524
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4604077172822636, guid: e865a10713e46984aba70d89a679e42f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2028,6 +2028,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 417396012}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &417396014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1755429121576396, guid: 4a0ab548b1b39cf4b8b48726d5f4fbfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 417396012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &417396015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417396014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afaaabe6a7e4646b7b27005d32abd7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndPoint: {x: 1, y: 45, z: 53}
+--- !u!65 &417396016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417396014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7679207, y: 2.253556, z: 0.873877}
+  m_Center: {x: 0.65006435, y: 1.126778, z: 0.10506843}
 --- !u!1001 &423667443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5108,6 +5140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121954613695448761, guid: b888303b68fcd4a4588c30ecad6a8be1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b888303b68fcd4a4588c30ecad6a8be1, type: 3}
