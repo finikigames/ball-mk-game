@@ -1,8 +1,9 @@
 ﻿using Extensions;
+using Services;
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public class BallBoxCollider : MonoBehaviour {
+    public class BallTetraCollider : MonoBehaviour {
         private MeshFilter _meshRenderer;
         private Mesh _oldMesh;
 
@@ -11,11 +12,14 @@ namespace DefaultNamespace {
         private void Start() {
             _meshRenderer = gameObject.AddComponentLazy<MeshFilter>();
             _oldMesh = _meshRenderer.mesh;
-            _meshRenderer.mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+
+            var tetraSettings = BallStateService.Instance.TetraSettings;
+            _meshRenderer.mesh = tetraSettings.TetraMesh;
             _type = gameObject.GetColliderType();
             
             gameObject.DelComponent<Collider>();
-            gameObject.AddComponentLazy<BoxCollider>();
+            var meshCollider = gameObject.AddComponentLazy<MeshCollider>();
+            meshCollider.convex = true;
         }
 
         private void OnDisable() {

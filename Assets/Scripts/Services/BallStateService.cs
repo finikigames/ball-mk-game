@@ -1,5 +1,6 @@
 ﻿using Scriptable;
 using Services.Base;
+﻿using DefaultNamespace;
 using Unity.Collections;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Services {
 
         public BouncySettings BouncySettings;
         public BoxSettings BoxSettings;
+        public TetraSettings TetraSettings;
         public ScaleSettings ScaleSettings;
 
         private float _currentRayLength;
