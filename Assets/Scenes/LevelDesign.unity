@@ -2336,6 +2336,7 @@ GameObject:
   - component: {fileID: 787760359}
   - component: {fileID: 787760361}
   - component: {fileID: 787760360}
+  - component: {fileID: 787760362}
   m_Layer: 4
   m_Name: TopWater
   m_TagString: Untagged
@@ -2408,6 +2409,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787760358}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &787760362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787760358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &806001574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5592,6 +5606,7 @@ GameObject:
   - component: {fileID: 2087105341}
   - component: {fileID: 2087105343}
   - component: {fileID: 2087105342}
+  - component: {fileID: 2087105344}
   m_Layer: 4
   m_Name: Cube
   m_TagString: Untagged
@@ -5664,6 +5679,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087105340}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &2087105344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087105340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Center: {x: 0, y: -0.000000059604645, z: 0}
 --- !u!1001 &2144105044
 PrefabInstance:
   m_ObjectHideFlags: 0

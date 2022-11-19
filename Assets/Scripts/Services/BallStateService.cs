@@ -20,6 +20,7 @@ namespace Services {
         public BoxSettings BoxSettings;
         public TetraSettings TetraSettings;
         public ScaleSettings ScaleSettings;
+        public WaterSettings WaterSettings;
 
         private float _currentRayLength;
         
