@@ -1,4 +1,5 @@
-﻿using Services.Base;
+﻿using DefaultNamespace;
+using Services.Base;
 using Unity.Collections;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Services {
 
         public BouncySettings BouncySettings;
         public BoxSettings BoxSettings;
+        public TetraSettings TetraSettings;
         
         public void InitializeBall(GameObject ball) {
             _ball = ball;

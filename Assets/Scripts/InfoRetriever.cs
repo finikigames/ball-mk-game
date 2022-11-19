@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Services;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class InfoRetriever : MonoBehaviour {
@@ -12,6 +8,8 @@ public class InfoRetriever : MonoBehaviour {
     public TextMeshProUGUI Text;
     
     private void Start() {
-        Button.onClick.AddListener(() => StartCoroutine(LeaderboardService.Instance.PushScore("Витя", 123)));
+        Button.onClick.AddListener(async () => 
+            await LeaderboardService.Instance.UpdateScore(new OneScoreInfo{_Id = "6378b64a33c40e0016ae5878", Name = "Витя", Score = 125}));
+        //Button.onClick.AddListener(() => StartCoroutine(LeaderboardService.Instance.GetAllScores()));
     }
 }
