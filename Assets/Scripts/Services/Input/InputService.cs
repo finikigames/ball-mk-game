@@ -8,6 +8,7 @@ namespace Services {
     public class InputService : BaseSingleton<InputService> {
         public Observable<Vector2> Input;
         public Observable<bool> Jump;
+        public bool IsJumped;
         public bool JumpValue;
         public Vector2 InputVector;
         public Vector2 InputVectorClamped;
@@ -46,6 +47,7 @@ namespace Services {
             }
 
             var jump = _input.GetJumpState();
+            IsJumped = _input.GetJumpEndState();
             Jump.Value = jump;
             JumpValue = jump;
         }

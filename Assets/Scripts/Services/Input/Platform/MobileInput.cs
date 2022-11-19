@@ -17,6 +17,10 @@ namespace Services.Platform {
         public override bool GetJumpState() {
             return false;
         }
+        
+        public override bool GetJumpEndState() {
+            return false;
+        }
 
         public override Vector2 GetInputState() {
             return _inputJoystick;

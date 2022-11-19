@@ -6,6 +6,10 @@ namespace Services.Platform {
         public override bool GetJumpState() {
             return Input.GetKey(KeyCode.Space);
         }
+        
+        public override bool GetJumpEndState() {
+            return Input.GetKeyUp(KeyCode.Space);
+        }
 
         public override Vector2 GetInputState() {
             var inputVertical = UnityEngine.Input.GetAxis("Vertical");
