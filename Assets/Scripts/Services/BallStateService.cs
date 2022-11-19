@@ -1,4 +1,5 @@
-﻿using Services.Base;
+﻿using Scriptable;
+using Services.Base;
 using Unity.Collections;
 using UnityEngine;
 
@@ -12,21 +13,29 @@ namespace Services {
         [ReadOnly]
         public bool OnGround;
 
-        private GameObject _ball;
+        public GameObject Ball;
 
         public BouncySettings BouncySettings;
         public BoxSettings BoxSettings;
+        public ScaleSettings ScaleSettings;
+
+        private float _currentRayLength;
         
         public void InitializeBall(GameObject ball) {
-            _ball = ball;
+            Ball = ball;
         }
 
         private void FixedUpdate() {
+            CalculateGroundRay();
             CheckOnGround();
         }
 
+        private void CalculateGroundRay() {
+            _currentRayLength = GroundRayLength * Ball.transform.localScale.x;
+        }
+
         private void CheckOnGround() {
-            OnGround = Physics.Raycast(_ball.transform.position, -Vector3.up, GroundRayLength);
+            OnGround = Physics.Raycast(Ball.transform.position, -Vector3.up, _currentRayLength);
         }
     }
 }
