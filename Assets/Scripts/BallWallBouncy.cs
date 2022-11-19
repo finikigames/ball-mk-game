@@ -6,14 +6,16 @@ namespace DefaultNamespace {
     
     public class BallWallBouncy : MonoBehaviour {
         private Collider _collider;
+        private PhysicMaterial _oldMaterial;
 
         private void Start() {
             _collider = gameObject.AddComponentLazy<Collider>();
+            _oldMaterial = _collider.material;
             _collider.material = BallStateService.Instance.BouncySettings.BouncyMaterial;
         }
 
-        private void OnDestroy() {
-            _collider.material = null;
+        private void OnDisable() {
+            _collider.material = _oldMaterial;
         }
     }
 }

@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 635137498890031567, guid: f2f3ccf6845f281439085dfcf8175312,
         type: 3}
       propertyPath: GroundRayLength
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 635137499030064689, guid: f2f3ccf6845f281439085dfcf8175312,
         type: 3}
@@ -412,6 +412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 635137499030064700, guid: f2f3ccf6845f281439085dfcf8175312,
+        type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 635137499030064701, guid: f2f3ccf6845f281439085dfcf8175312,
         type: 3}
