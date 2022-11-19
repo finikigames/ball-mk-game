@@ -1,5 +1,7 @@
-﻿using DefaultNamespace;
+﻿using System;
+using DefaultNamespace;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Extensions {
     public static class MonoBehaviourExtensions {
@@ -16,6 +18,15 @@ namespace Extensions {
         public static T AddComponentLazy<T>(this GameObject gameObject) where T : Component {
             if (!gameObject.HasComponent<T>(out var component)) {
                 return gameObject.AddComponent<T>();
+            }
+
+            return component;
+        }
+        
+        public static object AddComponentLazy(this GameObject gameObject, Type type) {
+            var component = gameObject.GetComponent(type);
+            if (component == null) {
+                return gameObject.AddComponent(type);
             }
 
             return component;

@@ -8,6 +8,7 @@ namespace Services.Base {
 
         private void Awake() {
             instance = (T)this;
+            Initialize();
         }
 
         protected virtual void Initialize() {}

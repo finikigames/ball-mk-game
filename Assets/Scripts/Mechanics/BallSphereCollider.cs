@@ -1,8 +1,9 @@
 ﻿using Extensions;
+using Services;
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public class BallBoxCollider : MonoBehaviour {
+    public class BallSphereCollider : MonoBehaviour {
         private MeshFilter _meshRenderer;
         private Mesh _oldMesh;
 
@@ -11,11 +12,12 @@ namespace DefaultNamespace {
         private void Start() {
             _meshRenderer = gameObject.AddComponentLazy<MeshFilter>();
             _oldMesh = _meshRenderer.mesh;
-            _meshRenderer.mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+            var sphereSettings = BallStateService.Instance.SphereSettings;
+            _meshRenderer.mesh = sphereSettings.SphereMesh;
             _type = gameObject.GetColliderType();
             
             gameObject.DelComponent<Collider>();
-            gameObject.AddComponentLazy<BoxCollider>();
+            gameObject.AddComponentLazy<SphereCollider>();
         }
 
         private void OnDisable() {

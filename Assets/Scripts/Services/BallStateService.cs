@@ -13,6 +13,7 @@ namespace Services {
         [ReadOnly]
         public bool OnGround;
 
+        [HideInInspector]
         public GameObject Ball;
 
         public BouncySettings BouncySettings;
@@ -21,6 +22,7 @@ namespace Services {
         public ScaleSettings ScaleSettings;
         public WaterSettings WaterSettings;
         public JumpSettings JumpSettings;
+        public SphereSettings SphereSettings;
 
         private float _currentRayLength;
         

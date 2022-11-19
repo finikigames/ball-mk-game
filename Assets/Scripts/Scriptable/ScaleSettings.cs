@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Scriptable {
-    [CreateAssetMenu(menuName = "Settings/Scale", fileName = "Scale settings")]
+    [CreateAssetMenu(menuName = "Settings/Scale settings", fileName = "Scale settings")]
     public class ScaleSettings : ScriptableObject {
         public Vector3 ScaleUpLimit;
         public Vector3 ScaleDownLimit;

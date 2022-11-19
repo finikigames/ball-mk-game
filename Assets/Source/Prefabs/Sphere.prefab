@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   JumpPower: 10
-  GroundRayLength: 10
+  GroundRayLength: 0.6
   InputThrottleValue: 0.1
   OnGround: 0
   Ball: {fileID: 0}
@@ -55,6 +55,8 @@ MonoBehaviour:
   TetraSettings: {fileID: 11400000, guid: 7acdcbd27ca40d44f9de352455ef3556, type: 2}
   ScaleSettings: {fileID: 11400000, guid: 7f9c9998e87f4fb429cb1dd5f96199c6, type: 2}
   WaterSettings: {fileID: 11400000, guid: 38f8065a6db12794e9d6569f9e8f1695, type: 2}
+  JumpSettings: {fileID: 11400000, guid: 97e215474e95cee458d20ca1f960e495, type: 2}
+  SphereSettings: {fileID: 11400000, guid: 97a3751d8694a924a8765883ca639bcf, type: 2}
 --- !u!1 &635137499030064701
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +74,7 @@ GameObject:
   - component: {fileID: 635137499030064692}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e6124fa6c92c4a04dae2a378c135a1ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

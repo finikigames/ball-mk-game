@@ -3,7 +3,7 @@ using Scriptable;
 using Services;
 using UnityEngine;
 
-public abstract class WaterFloating : MonoBehaviour {
+public abstract class BallWaterFloating : MonoBehaviour {
     private float _waterLevel = 1.5f;
     private float _floatHeight = 1f;
     private Vector3 _buoyancyCenterOffset;

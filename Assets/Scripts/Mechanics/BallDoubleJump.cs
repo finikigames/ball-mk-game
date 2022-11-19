@@ -3,7 +3,7 @@ using Scriptable;
 using Services;
 using UnityEngine;
 
-public class DoubleJump : MonoBehaviour {
+public class BallDoubleJump : MonoBehaviour {
     private Rigidbody _rigidbody;
     private float _jumpDown;
     private float _jumpPowerPercent;

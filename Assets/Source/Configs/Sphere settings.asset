@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d8cff4688e4602ac952963fe1052c3, type: 3}
-  m_Name: Settings_Box
+  m_Script: {fileID: 11500000, guid: 51256c7a7f9d4c359cb6939e16bd9423, type: 3}
+  m_Name: Sphere settings
   m_EditorClassIdentifier: 
-  BoxMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  SphereMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
