@@ -53,6 +53,8 @@ MonoBehaviour:
   BouncySettings: {fileID: 11400000, guid: aeb2a2495e7e27d47a7050f0cb0e3d5d, type: 2}
   BoxSettings: {fileID: 11400000, guid: d2da537035374ac4e9ab24b8ab9b08b3, type: 2}
   TetraSettings: {fileID: 11400000, guid: 7acdcbd27ca40d44f9de352455ef3556, type: 2}
+  ScaleSettings: {fileID: 11400000, guid: 7f9c9998e87f4fb429cb1dd5f96199c6, type: 2}
+  WaterSettings: {fileID: 11400000, guid: 38f8065a6db12794e9d6569f9e8f1695, type: 2}
 --- !u!1 &635137499030064701
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,22 +1,21 @@
-using System;
 using Extensions;
+using Scriptable;
 using Services;
 using UnityEngine;
 
-public class WaterFloating : MonoBehaviour {
-    public float WaterLevel = 1.5f;
-    public float FloatHeight = 1f;
-    public Vector3 BuoyancyCenterOffset;
-    public float BounceDamp;
+public abstract class WaterFloating : MonoBehaviour {
+    private float _waterLevel = 1.5f;
+    private float _floatHeight = 1f;
+    private Vector3 _buoyancyCenterOffset;
+    private float _bounceDamp;
 
-    public bool Inverse;
-
-    public float _speedDownPercent = 0.7f;
-    public float _justDownPercent = 0.9f;
+    private float _speedDownPercent = 0.7f;
+    private float _jumpDownPercent = 0.9f;
 
     private BallStateService _stateService;
+    private WaterSettings _waterSettings;
     private bool _onWater;
-    private Rigidbody _rigidbody;
+    protected Rigidbody _rigidbody;
 
     private float _speedDown;
     private float _jumpDown;
@@ -25,52 +24,62 @@ public class WaterFloating : MonoBehaviour {
     private void Start() {
         _rigidbody = gameObject.AddComponentLazy<Rigidbody>();
         _stateService = BallStateService.Instance;
+        _waterSettings = _stateService.WaterSettings;
+        
+        SetValues();
     }
 
     private void FixedUpdate() {
         if (!_onWater) return;
 
-        var actionPoint = transform.position + transform.TransformDirection(BuoyancyCenterOffset);
-        var forceFactor = 1f - ((actionPoint.y - WaterLevel) / FloatHeight);
+        var actionPoint = transform.position + transform.TransformDirection(_buoyancyCenterOffset);
+        var forceFactor = 1f - ((actionPoint.y - _waterLevel) / _floatHeight);
 
 
         if (!(forceFactor > 0f)) return;
+        var upLift = -Physics.gravity * (forceFactor - _rigidbody.velocity.y * _bounceDamp);
 
-        var upLift = -Physics.gravity * (forceFactor - _rigidbody.velocity.y * BounceDamp);
-        if (Inverse) {
-
-            upLift = -upLift;
-        }
-
-        _rigidbody.AddForceAtPosition(upLift, actionPoint);
+        ApplyForce(upLift, actionPoint);
     }
 
+    protected abstract void ApplyForce(Vector3 upLift, Vector3 actionPoint);
+
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer != LayerMask.NameToLayer("Water")) return;
-
+        if (other.gameObject.layer != LayerMask.NameToLayer("Water") ||
+            _onWater) return;
+        
         _onWater = true;
-
-        if (!Inverse || _isDrownDown) return;
 
         _speedDown = _stateService.Speed * _speedDownPercent;
         _stateService.Speed -= _speedDown;
 
-        _jumpDown = _stateService.JumpPower * _justDownPercent;
+        _jumpDown = _stateService.JumpPower * _jumpDownPercent;
         _stateService.JumpPower -= _jumpDown;
-        
-        _isDrownDown = true;
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.gameObject.layer != LayerMask.NameToLayer("Water")) return;
-
+        if (other.gameObject.layer != LayerMask.NameToLayer("Water") ||
+            !_onWater) return;
+        
         _onWater = false;
-
-        if (!Inverse || !_isDrownDown) return;
 
         _stateService.Speed += _speedDown;
         _stateService.JumpPower += _jumpDown;
+    }
 
-        _isDrownDown = false;
+    private void SetValues() {
+        _waterLevel = _waterSettings.WaterLevel;
+        _floatHeight = _waterSettings.FloatHeight;
+        _buoyancyCenterOffset = _waterSettings.BuoyancyCenterOffset;
+        _bounceDamp = _waterSettings.BounceDamp;
+        _speedDownPercent = _waterSettings.SpeedDownPercent;
+        _jumpDownPercent = _waterSettings.JumpDownPercent;
+    }
+
+    private void OnDisable() {
+        if (!_onWater) return;
+        
+        _stateService.Speed += _speedDown;
+        _stateService.JumpPower += _jumpDown;
     }
 }
